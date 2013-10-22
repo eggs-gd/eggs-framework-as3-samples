@@ -4,10 +4,12 @@
 package gd.eggs.cube.view
 {
 
+	import gd.eggs.cube.app.Notifications;
 	import gd.eggs.cube.app.Views;
 	import gd.eggs.mvc.app.ViewManager;
 	import gd.eggs.mvc.view.BaseMediator;
 	import gd.eggs.mvc.view.ViewEvent;
+	import gd.eggs.observer.Notification;
 
 
 	public class Mediator extends BaseMediator
@@ -22,8 +24,7 @@ package gd.eggs.cube.view
 			switch (event.subType)
 			{
 				case MainMenuView.CLICK_PLAY:
-					ViewManager.hideAll();
-					ViewManager.show(Views.GAME);
+					sendNotification(new Notification(Notifications.START_GAME));
 					break;
 
 				case GameView.BACK_CLICK:

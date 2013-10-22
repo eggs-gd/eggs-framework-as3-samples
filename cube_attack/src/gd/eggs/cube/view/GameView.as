@@ -8,6 +8,7 @@ package gd.eggs.cube.view
 
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 
 	import gd.eggs.cube.app.Config;
 	import gd.eggs.cube.app.Models;
@@ -30,7 +31,16 @@ package gd.eggs.cube.view
 		public function GameView()
 		{
 			var model:GameModel = ModelManager.getModel(Models.GAME) as GameModel;
+			super(model);
 
+			model.addCallback(this, GameModel.START_GAME, onGameStart);
+			model.addCallback(this, GameModel.UPDATE_FIELD, onFieldUpdate);
+
+			init();
+		}
+
+		private function init():void
+		{
 			graphics.beginFill(0xaaaaaa);
 			graphics.drawRect(0, 0, Config.SCREEN_SIZE.x, Config.SCREEN_SIZE.y);
 			graphics.endFill();
@@ -40,13 +50,12 @@ package gd.eggs.cube.view
 
 			_blocks = new Vector.<Vector.<Block>>();
 
-			for (var i:int = 0 ; i < Config.FIELD_SIZE.x ; i ++)
+			for (var i:int = 0; i < Config.FIELD_SIZE.x; i++)
 			{
 				_blocks[i] = new Vector.<Block>();
-				for (var j:int = 0 ; j < Config.FIELD_SIZE.y ; j ++)
+				for (var j:int = 0; j < Config.FIELD_SIZE.y; j++)
 				{
-					var block = new Block();
-					block.update(0);
+					var block:Block = new Block();
 					block.x = i * (Config.BLOCK_SIZE.x + 2);
 					block.y = j * (Config.BLOCK_SIZE.y + 2);
 					_blocksCont.addChild(block);
@@ -55,8 +64,8 @@ package gd.eggs.cube.view
 				}
 			}
 
-			_blocksCont.x = (Config.SCREEN_SIZE.x - _blocksCont.width) * 0.5;
-			_blocksCont.y = (Config.SCREEN_SIZE.y - _blocksCont.height) - 20;
+			_blocksCont.x = (Config.SCREEN_SIZE.x - Config.FIELD_SIZE.x * (Config.BLOCK_SIZE.x + 2)) * 0.5;
+			_blocksCont.y = (Config.SCREEN_SIZE.y - Config.FIELD_SIZE.y * (Config.BLOCK_SIZE.y + 2)) - 20;
 
 			_backBtn = new Button();
 			_backBtn.label = "<< Back";
@@ -65,13 +74,29 @@ package gd.eggs.cube.view
 			_backBtn.addEventListener(MouseEvent.CLICK, onBackClick);
 			_backBtn.buttonMode = true;
 			addChild(_backBtn);
+		}
 
-			super(model, true);
+		private function onFieldUpdate():void
+		{
+
+		}
+
+		private function onGameStart():void
+		{
+			for (var i:int = 0 ; i < Config.FIELD_SIZE.x ; i ++)
+			{
+				for (var j:int = 0 ; j < Config.FIELD_SIZE.y ; j ++)
+				{
+					_blocks[i][j].update(model.field[i][j]);
+				}
+			}
 		}
 
 		private function onBackClick(event:MouseEvent):void
 		{
 			dispatchEvent(new ViewEvent(ViewEvent.CHANGE, BACK_CLICK));
 		}
+
+		private function get model():GameModel { return _model as GameModel; }
 	}
 }

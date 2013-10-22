@@ -6,6 +6,7 @@ package gd.eggs.cube.view
 
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 
 	import gd.eggs.cube.app.Config;
 
@@ -24,6 +25,12 @@ package gd.eggs.cube.view
 		public function update(type:int):void
 		{
 			_type = type;
+
+			if (!_type)
+			{
+				visible = false;
+				return;
+			}
 
 			graphics.clear();
 			graphics.lineStyle(2);
