@@ -14,12 +14,14 @@ package gd.eggs.cube.app
 
 	import gd.eggs.cube.view.GameView;
 	import gd.eggs.cube.view.MainMenuView;
+	import gd.eggs.cube.view.Mediator;
 	import gd.eggs.cube.view.StatusBarView;
 
 	import gd.eggs.mvc.app.IBootstrap;
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.app.ViewManager;
 	import gd.eggs.mvc.controller.BaseController;
+	import gd.eggs.mvc.view.BaseView;
 	import gd.eggs.util.Validate;
 
 
@@ -80,14 +82,22 @@ package gd.eggs.cube.app
 			ViewManager.addScope(Layers.WINDOWS, windowsCont);
 			ViewManager.addScope(Layers.TOP, topCont);
 
+			var mediator:Mediator = new Mediator();
+
 			// reg screens
-			ViewManager.addView(Layers.GAME, Views.GAME, new GameView());
+			var view:BaseView = new GameView();
+			ViewManager.addView(Layers.GAME, Views.GAME, view);
+			mediator.injectView(view);
 
 			// reg windows
-			ViewManager.addView(Layers.WINDOWS, Views.MAIN_MENU, new MainMenuView());
+			view = new MainMenuView();
+			ViewManager.addView(Layers.WINDOWS, Views.MAIN_MENU, view);
+			mediator.injectView(view);
 
 			// reg top layer
-			ViewManager.addView(Layers.TOP, Views.STATUS_BAR, new StatusBarView());
+			view = new StatusBarView();
+			ViewManager.addView(Layers.TOP, Views.STATUS_BAR, view);
+			mediator.injectView(view);
 		}
 
 		public function registerNotifications():void
