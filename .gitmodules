@@ -1,0 +1,3 @@
+[submodule "eggs-framework-as3"]
+	path = eggs-framework-as3
+	url = git@github.com:eggs-gd/eggs-framework-as3.git
