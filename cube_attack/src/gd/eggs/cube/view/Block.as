@@ -8,7 +8,7 @@ package gd.eggs.cube.view
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
 
-	import gd.eggs.cube.app.Config;
+	import gd.eggs.cube.Config;
 
 
 	public class Block extends Sprite

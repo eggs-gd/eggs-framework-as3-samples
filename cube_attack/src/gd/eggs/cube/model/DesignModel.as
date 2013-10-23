@@ -4,6 +4,8 @@
 package gd.eggs.cube.model
 {
 
+	import flash.geom.Point;
+
 	import gd.eggs.mvc.model.BaseModel;
 
 
@@ -13,5 +15,7 @@ package gd.eggs.cube.model
 		{
 			super();
 		}
+
+		public function get fieldSize():Point { return new Point(20, 10); }
 	}
 }

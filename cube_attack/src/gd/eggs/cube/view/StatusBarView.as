@@ -4,7 +4,7 @@
 package gd.eggs.cube.view
 {
 
-	import gd.eggs.cube.app.Models;
+	import gd.eggs.cube.enum.Models;
 	import gd.eggs.cube.model.UserModel;
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.view.BaseView;

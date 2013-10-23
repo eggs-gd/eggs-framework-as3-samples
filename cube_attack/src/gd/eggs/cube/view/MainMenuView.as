@@ -8,10 +8,11 @@ package gd.eggs.cube.view
 
 	import flash.events.MouseEvent;
 
-	import gd.eggs.cube.app.Config;
+	import gd.eggs.cube.Config;
 
-	import gd.eggs.cube.app.Models;
+	import gd.eggs.cube.enum.Models;
 	import gd.eggs.cube.model.DesignModel;
+	import gd.eggs.cube.enum.ViewEvents;
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.view.BaseView;
 	import gd.eggs.mvc.view.ViewEvent;
@@ -19,8 +20,6 @@ package gd.eggs.cube.view
 
 	public class MainMenuView extends BaseView
 	{
-		public static const CLICK_PLAY:String = "clickPlay";
-
 		public function MainMenuView()
 		{
 			var model:DesignModel = ModelManager.getModel(Models.GAME) as DesignModel;
@@ -44,7 +43,7 @@ package gd.eggs.cube.view
 
 		private function onPlayClick(event:MouseEvent):void
 		{
-			dispatchEvent(new ViewEvent(ViewEvent.CHANGE, CLICK_PLAY));
+			dispatchEvent(new ViewEvent(ViewEvent.CHANGE, ViewEvents.GO_TO_GAME));
 		}
 	}
 }

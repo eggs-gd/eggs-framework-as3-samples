@@ -8,10 +8,10 @@ package gd.eggs.cube.view
 
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	import flash.geom.Point;
 
-	import gd.eggs.cube.app.Config;
-	import gd.eggs.cube.app.Models;
+	import gd.eggs.cube.Config;
+	import gd.eggs.cube.enum.Models;
+	import gd.eggs.cube.enum.ViewEvents;
 	import gd.eggs.cube.model.GameModel;
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.view.BaseView;
@@ -20,8 +20,6 @@ package gd.eggs.cube.view
 
 	public class GameView extends BaseView
 	{
-
-		public static const BACK_CLICK:String = "goToMainMenu";
 
 		private var _blocksCont:Sprite;
 		private var _blocks:Vector.<Vector.<Block>>;
@@ -35,6 +33,7 @@ package gd.eggs.cube.view
 
 			model.addCallback(this, GameModel.START_GAME, onGameStart);
 			model.addCallback(this, GameModel.UPDATE_FIELD, onFieldUpdate);
+			model.addCallback(this, GameModel.CLOSE_GAME, onGameClose);
 
 			init();
 		}
@@ -92,9 +91,14 @@ package gd.eggs.cube.view
 			}
 		}
 
+		private function onGameClose():void
+		{
+
+		}
+
 		private function onBackClick(event:MouseEvent):void
 		{
-			dispatchEvent(new ViewEvent(ViewEvent.CHANGE, BACK_CLICK));
+			dispatchEvent(new ViewEvent(ViewEvent.CHANGE, ViewEvents.GO_TO_MAIN_MENU));
 		}
 
 		private function get model():GameModel { return _model as GameModel; }

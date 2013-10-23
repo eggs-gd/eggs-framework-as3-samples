@@ -1,11 +1,16 @@
 /**
  * Created by Dukobpa3 on 22.10.13.
  */
-package gd.eggs.cube.app
+package gd.eggs.cube
 {
 
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
+
+	import gd.eggs.cube.controller.AppController;
+	import gd.eggs.cube.enum.Layers;
+	import gd.eggs.cube.enum.Models;
+	import gd.eggs.cube.enum.Views;
 
 	import gd.eggs.cube.model.DesignModel;
 
@@ -14,14 +19,12 @@ package gd.eggs.cube.app
 
 	import gd.eggs.cube.view.GameView;
 	import gd.eggs.cube.view.MainMenuView;
-	import gd.eggs.cube.view.Mediator;
 	import gd.eggs.cube.view.StatusBarView;
 
 	import gd.eggs.mvc.app.IBootstrap;
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.app.ViewManager;
 	import gd.eggs.mvc.controller.BaseController;
-	import gd.eggs.mvc.view.BaseView;
 	import gd.eggs.util.Validate;
 
 
@@ -30,7 +33,6 @@ package gd.eggs.cube.app
 		private static var _instance:Bootstrap;
 
 		private var _root:DisplayObjectContainer;
-		private var _appController:AppController;
 
 		public function Bootstrap()
 		{
@@ -62,9 +64,13 @@ package gd.eggs.cube.app
 
 		public function registerModels():void
 		{
-			ModelManager.addModel(Models.GAME, new GameModel());
-			ModelManager.addModel(Models.USER, new UserModel());
+			// модель статики должна быть зарегистрирована самой первой так как к ней могут обращаться другие.
 			ModelManager.addModel(Models.DESIGN, new DesignModel());
+			// Модель юзера вторая по важности и востребованости в разных местах программы
+			ModelManager.addModel(Models.USER, new UserModel());
+
+			// Дальше все остальные
+			ModelManager.addModel(Models.GAME, new GameModel());
 		}
 
 		public function registerViews():void
@@ -82,22 +88,14 @@ package gd.eggs.cube.app
 			ViewManager.addScope(Layers.WINDOWS, windowsCont);
 			ViewManager.addScope(Layers.TOP, topCont);
 
-			var mediator:Mediator = new Mediator();
-
 			// reg screens
-			var view:BaseView = new GameView();
-			ViewManager.addView(Layers.GAME, Views.GAME, view);
-			mediator.injectView(view);
+			ViewManager.addView(Layers.GAME, Views.GAME, new GameView());
 
 			// reg windows
-			view = new MainMenuView();
-			ViewManager.addView(Layers.WINDOWS, Views.MAIN_MENU, view);
-			mediator.injectView(view);
+			ViewManager.addView(Layers.WINDOWS, Views.MAIN_MENU, new MainMenuView());
 
 			// reg top layer
-			view = new StatusBarView();
-			ViewManager.addView(Layers.TOP, Views.STATUS_BAR, view);
-			mediator.injectView(view);
+			ViewManager.addView(Layers.TOP, Views.STATUS_BAR, new StatusBarView());
 		}
 
 		public function registerNotifications():void
@@ -107,10 +105,11 @@ package gd.eggs.cube.app
 
 		public function registerControllers():void
 		{
-			_appController = new AppController();
-			_appController.init();
+			var controller:BaseController;
+
+			controller = new AppController();
+			controller.init();
 		}
 
-		public function get appController():BaseController { return _appController; }
 	}
 }
