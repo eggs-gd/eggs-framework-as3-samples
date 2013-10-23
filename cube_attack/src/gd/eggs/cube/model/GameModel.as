@@ -13,7 +13,7 @@ package gd.eggs.cube.model
 	public class GameModel extends BaseModel
 	{
 		public static const START_GAME:String = "startGame";
-		public static const CLOSE_GAME:String = "startGame";
+		public static const CLOSE_GAME:String = "closeGame";
 		public static const UPDATE_FIELD:String = "updateField";
 
 		private var _design:DesignModel;
