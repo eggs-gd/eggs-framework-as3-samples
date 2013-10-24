@@ -14,4 +14,35 @@
         <module>cube-attack</module>
     </modules>
 
+	<parent>
+        <groupId>gd.eggs.as3</groupId>
+        <artifactId>base</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+	
+	<repositories>
+        <repository>
+            <id>github.repo.release</id>
+            <name>Internal Repository</name>
+            <url>https://github.com/eggs-gd/eggs-mvn-artifactory/raw/master/mvn-repo/release</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>github.repo.snapshot</id>
+            <name>Internal Repository</name>
+            <url>https://github.com/eggs-gd/eggs-mvn-artifactory/raw/master/mvn-repo/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+	
 </project>
