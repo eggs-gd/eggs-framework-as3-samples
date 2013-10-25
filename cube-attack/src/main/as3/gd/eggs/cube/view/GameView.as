@@ -82,9 +82,9 @@ package gd.eggs.cube.view
 
 		private function onGameStart():void
 		{
-			for (var i:int = 0 ; i < Config.FIELD_SIZE.x ; i ++)
+			for (var i:int = 0; i < Config.FIELD_SIZE.x; i++)
 			{
-				for (var j:int = 0 ; j < Config.FIELD_SIZE.y ; j ++)
+				for (var j:int = 0; j < Config.FIELD_SIZE.y; j++)
 				{
 					_blocks[i][j].update(model.field[i][j]);
 				}

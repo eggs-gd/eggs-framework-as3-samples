@@ -7,9 +7,8 @@ package gd.eggs.cube
 	import flash.display.Sprite;
 	import flash.events.Event;
 
-	import gd.eggs.cube.Bootstrap;
 
-    [SWF(width=800, height=600)]
+	[SWF(width=800, height=600)]
 	public class Main extends Sprite
 	{
 

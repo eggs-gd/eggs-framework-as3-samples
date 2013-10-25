@@ -9,10 +9,9 @@ package gd.eggs.cube.view
 	import flash.events.MouseEvent;
 
 	import gd.eggs.cube.Config;
-
 	import gd.eggs.cube.enum.Models;
-	import gd.eggs.cube.model.DesignModel;
 	import gd.eggs.cube.enum.ViewEvents;
+	import gd.eggs.cube.model.DesignModel;
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.view.BaseView;
 	import gd.eggs.mvc.view.ViewEvent;

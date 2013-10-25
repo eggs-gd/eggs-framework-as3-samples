@@ -11,16 +11,12 @@ package gd.eggs.cube
 	import gd.eggs.cube.enum.Layers;
 	import gd.eggs.cube.enum.Models;
 	import gd.eggs.cube.enum.Views;
-
 	import gd.eggs.cube.model.DesignModel;
-
 	import gd.eggs.cube.model.GameModel;
 	import gd.eggs.cube.model.UserModel;
-
 	import gd.eggs.cube.view.GameView;
 	import gd.eggs.cube.view.MainMenuView;
 	import gd.eggs.cube.view.StatusBarView;
-
 	import gd.eggs.mvc.app.IBootstrap;
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.app.ViewManager;

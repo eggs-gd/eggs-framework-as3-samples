@@ -6,7 +6,6 @@ package gd.eggs.cube.view
 
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	import flash.geom.Point;
 
 	import gd.eggs.cube.Config;
 

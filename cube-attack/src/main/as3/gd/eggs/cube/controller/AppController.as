@@ -4,15 +4,15 @@
 package gd.eggs.cube.controller
 {
 	import gd.eggs.cube.enum.Models;
-	import gd.eggs.cube.enum.Views;
-
-	import gd.eggs.cube.model.GameModel;
 	import gd.eggs.cube.enum.ViewEvents;
+	import gd.eggs.cube.enum.Views;
+	import gd.eggs.cube.model.GameModel;
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.app.ViewManager;
 	import gd.eggs.mvc.controller.BaseController;
 	import gd.eggs.mvc.view.BaseView;
 	import gd.eggs.mvc.view.ViewEvent;
+
 
 	public class AppController extends BaseController
 	{
