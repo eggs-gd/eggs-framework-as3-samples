@@ -1,6 +1,5 @@
-﻿<?xml version="1.0" encoding="ISO-8859-1"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <project name="Maven">
-
 	<skin>
 		<groupId>org.apache.maven.skins</groupId>
 		<artifactId>maven-fluido-skin</artifactId>
@@ -8,9 +7,12 @@
 	</skin>
 
 	<body>
-
-		<menu ref="reports">
-			<item name="PMD Report" href="flexpmd.html"/>
+		<menu name="Documentation">
+			<item name="AsDocs" href="asdoc/index.html"/>
+			<item name="PMD Report" href="pmd/flexpmd.html"/>
+			<item name="Coverage Report" href="coverage/index.html"/>
 		</menu>
+
+		<menu ref="reports"/>
 	</body>
 </project>
