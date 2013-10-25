@@ -1,6 +1,3 @@
-/**
- * Created by Dukobpa3 on 22.10.13.
- */
 package gd.eggs.cube.model
 {
 

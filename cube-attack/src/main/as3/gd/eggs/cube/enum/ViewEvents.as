@@ -1,6 +1,3 @@
-/**
- * Created by oburdun on 10/23/13.
- */
 package gd.eggs.cube.enum
 {
 	public class ViewEvents
