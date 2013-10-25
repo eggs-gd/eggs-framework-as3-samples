@@ -1,29 +1,3 @@
-﻿/**
- * Copyright 2013 earwiGGames team and other contributors
- * http://eggs.gd/
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
- *
- * - cond 1
- * - cond 2
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
 package gd.eggs.cube
 {
 
@@ -83,12 +57,12 @@ package gd.eggs.cube
 
 		public function registerModels():void
 		{
-			// Ð¼Ð¾Ð´ÐµÐ»ÑŒ Ñ?Ñ‚Ð°Ñ‚Ð¸ÐºÐ¸ Ð´Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ Ð·Ð°Ñ€ÐµÐ³Ð¸Ñ?Ñ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð° Ñ?Ð°Ð¼Ð¾Ð¹ Ð¿ÐµÑ€Ð²Ð¾Ð¹ Ñ‚Ð°Ðº ÐºÐ°Ðº Ðº Ð½ÐµÐ¹ Ð¼Ð¾Ð³ÑƒÑ‚ Ð¾Ð±Ñ€Ð°Ñ‰Ð°Ñ‚ÑŒÑ?Ñ? Ð´Ñ€ÑƒÐ³Ð¸Ðµ.
+			// �?¼�?¾�?´�?µ�?»ÑŒ Ñ?Ñ‚�?°Ñ‚�?¸�?º�?¸ �?´�?¾�?»�?¶�?½�?° �?±Ñ‹Ñ‚ÑŒ �?·�?°Ñ€�?µ�?³�?¸Ñ?Ñ‚Ñ€�?¸Ñ€�?¾�?²�?°�?½�?° Ñ?�?°�?¼�?¾�?¹ �?¿�?µÑ€�?²�?¾�?¹ Ñ‚�?°�?º �?º�?°�?º �?º �?½�?µ�?¹ �?¼�?¾�?³ÑƒÑ‚ �?¾�?±Ñ€�?°Ñ‰�?°Ñ‚ÑŒÑ?Ñ? �?´Ñ€Ñƒ�?³�?¸�?µ.
 			ModelManager.addModel(Models.DESIGN, new DesignModel());
-			// ÐœÐ¾Ð´ÐµÐ»ÑŒ ÑŽÐ·ÐµÑ€Ð° Ð²Ñ‚Ð¾Ñ€Ð°Ñ? Ð¿Ð¾ Ð²Ð°Ð¶Ð½Ð¾Ñ?Ñ‚Ð¸ Ð¸ Ð²Ð¾Ñ?Ñ‚Ñ€ÐµÐ±Ð¾Ð²Ð°Ð½Ð¾Ñ?Ñ‚Ð¸ Ð² Ñ€Ð°Ð·Ð½Ñ‹Ñ… Ð¼ÐµÑ?Ñ‚Ð°Ñ… Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹
+			// �?œ�?¾�?´�?µ�?»ÑŒ ÑŽ�?·�?µÑ€�?° �?²Ñ‚�?¾Ñ€�?°Ñ? �?¿�?¾ �?²�?°�?¶�?½�?¾Ñ?Ñ‚�?¸ �?¸ �?²�?¾Ñ?Ñ‚Ñ€�?µ�?±�?¾�?²�?°�?½�?¾Ñ?Ñ‚�?¸ �?² Ñ€�?°�?·�?½Ñ‹Ñ… �?¼�?µÑ?Ñ‚�?°Ñ… �?¿Ñ€�?¾�?³Ñ€�?°�?¼�?¼Ñ‹
 			ModelManager.addModel(Models.USER, new UserModel());
 
-			// Ð”Ð°Ð»ÑŒÑˆÐµ Ð²Ñ?Ðµ Ð¾Ñ?Ñ‚Ð°Ð»ÑŒÐ½Ñ‹Ðµ
+			// �?�?�?°�?»ÑŒÑˆ�?µ �?²Ñ?�?µ �?¾Ñ?Ñ‚�?°�?»ÑŒ�?½Ñ‹�?µ
 			ModelManager.addModel(Models.GAME, new GameModel());
 		}
 
