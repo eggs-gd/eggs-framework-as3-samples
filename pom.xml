@@ -14,35 +14,290 @@
         <module>cube-attack</module>
     </modules>
 
-	<parent>
+	<!--<parent>
         <groupId>gd.eggs.as3</groupId>
         <artifactId>base</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-    </parent>
-	
-	<repositories>
+    </parent>-->
+
+    <properties>
+        <flexmojos.version>4.2-beta</flexmojos.version>
+        <flex.version>4.6.b.23201</flex.version>
+        <flashplayer.version>11.1</flashplayer.version>
+        <!--maven variable which points to your local repository -->
+        <internal.repo.path>file://d/prj/eggs/eggs-mvn-artifactory/mvn-repo</internal.repo.path>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <compile.debug>false</compile.debug>
+            </properties>
+        </profile>
+        <profile>
+            <id>debug</id>
+            <activation>
+                <property>
+                    <name>debug</name>
+                </property>
+            </activation>
+            <properties>
+                <compile.debug>true</compile.debug>
+            </properties>
+        </profile>
+        <profile>
+            <id>strict</id>
+            <activation>
+                <property>
+                    <name>strict</name>
+                </property>
+            </activation>
+            <properties>
+                <compile.strict>true</compile.strict>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <!-- Flex SDK -->
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>flex-framework</artifactId>
+            <version>${flex.version}</version>
+            <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.adobe.flex.framework</groupId>
+                    <artifactId>playerglobal</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>playerglobal</artifactId>
+            <version>${flex.version}</version>
+            <classifier>${flashplayer.version}</classifier>
+            <type>swc</type>
+        </dependency>
+
+        <!-- flexunit -->
+        <dependency><!-- FlexUnit for flexmojos -->
+            <groupId>org.sonatype.flexmojos</groupId>
+            <artifactId>flexmojos-unittest-flexunit4</artifactId>
+            <version>${flexmojos.version}</version>
+            <type>swc</type>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.adobe.flex.framework</groupId>
+                    <artifactId>playerglobal</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.adobe.flex.framework</groupId>
+                    <artifactId>airframework</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.adobe.flexunit</groupId>
+                    <artifactId>flexunit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flexunit</groupId>
+            <artifactId>flexunit</artifactId>
+            <version>4.1.0</version>
+            <type>swc</type>
+            <classifier>as3</classifier>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>hamcrest-as3</groupId>
+            <artifactId>hamcrest-as3</artifactId>
+            <version>1.1.0</version>
+            <type>swc</type>
+            <scope>test</scope>
+        </dependency>
+        <!--<dependency>
+            <groupId>com.adobe.mockolate</groupId>
+            <artifactId>mockolate-as3</artifactId>
+            <version>0.12.4</version>
+            <type>swc</type>
+            <scope>test</scope>
+        </dependency>-->
+    </dependencies>
+
+    <repositories>
+        <!-- 3-d party -->
+        <repository>
+            <id>flex-mojos-repository</id>
+            <name>flex-mojos-repository</name>
+            <url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+        </repository>
+        <repository>
+            <id>oss.sonatype.org</id>
+            <name>oss.sonatype.org</name>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+
+        <!-- our -->
         <repository>
             <id>github.repo.release</id>
             <name>Internal Repository</name>
-            <url>https://github.com/eggs-gd/eggs-mvn-artifactory/raw/master/mvn-repo/release</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+            <url>https://github.com/eggs-gd/eggs-mvn-artifactory/mvn-repo/release</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
         </repository>
         <repository>
             <id>github.repo.snapshot</id>
             <name>Internal Repository</name>
-            <url>https://github.com/eggs-gd/eggs-mvn-artifactory/raw/master/mvn-repo/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <url>https://github.com/eggs-gd/eggs-mvn-artifactory/mvn-repo/snapshot</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>flex-mojos-plugin-repository</id>
+            <url>http://repository.sonatype.org/content/groups/flexgroup</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>FlexPMD repository on opensource.adobe.com release</id>
+            <name>FlexPMD repository on opensource.adobe.com release</name>
+            <url>http://opensource.adobe.com/svn/opensource/flexpmd/maven-repository/release/</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>FlexPMD repository on opensource.adobe.com snapshot</id>
+            <name>FlexPMD repository on opensource.adobe.com snapshot</name>
+            <url>http://opensource.adobe.com/svn/opensource/flexpmd/maven-repository/snapshot/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>internal.repo.release</id>
+            <name>Internal Repository</name>
+            <url>${internal.repo.path}/release</url>
+        </repository>
+        <snapshotRepository>
+            <id>internal.repo.snapshot</id>
+            <name>Internal Repository</name>
+            <url>${internal.repo.path}/snapshot</url>
+        </snapshotRepository>
+
+        <!--<site>
+           <id>documentation</id>
+            <url>scp://www.mycompany.com/www/docs/project/</url>
+        </site>-->
+    </distributionManagement>
+
+    <build>
+        <finalName>${project.name}</finalName>
+        <sourceDirectory>src/</sourceDirectory>
+        <testSourceDirectory>test/</testSourceDirectory>
+
+        <testResources>
+            <testResource>
+                <directory>resources/test</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <resources>
+            <resource>
+                <directory>resources/main</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.flexmojos</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <version>${flexmojos.version}</version>
+                <extensions>true</extensions>
+
+                <configuration>
+                    <storepass/>
+                    <strict>${compile.strict}</strict>
+                    <sourceFile>${documentClass}</sourceFile>
+                    <targetPlayer>${flashplayer.version}</targetPlayer>
+                    <debug>${compile.debug}</debug>
+                    <defines>
+                        <property>
+                            <name>CONFIG::debug</name>
+                            <value>${compile.debug}</value>
+                        </property>
+                        <property>
+                            <name>CONFIG::versionNumber</name>
+                            <value>'${project.version}'</value>
+                        </property>
+                    </defines>
+                    <compilerWarnings>
+                        <warn-no-constructor>false</warn-no-constructor>
+                    </compilerWarnings>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.adobe.flex</groupId>
+                        <artifactId>compiler</artifactId>
+                        <version>${flex.version}</version>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>com.adobe.ac</groupId>
+                <artifactId>flex-pmd-maven-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>check</goal>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.3</version>
+            </plugin>-->
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.flexmojos</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <version>${flexmojos.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <id>asdoc-report</id>
+                        <reports>
+                            <report>asdoc-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <!--<plugin>
+                <groupId>com.adobe.ac</groupId>
+                <artifactId>flex-pmd-maven-plugin</artifactId>
+                <version>1.2</version>
+            </plugin>-->
+        </plugins>
+    </reporting>
 	
 </project>
