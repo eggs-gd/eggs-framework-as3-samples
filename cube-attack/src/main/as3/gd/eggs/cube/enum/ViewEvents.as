@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright 2013 earwiGGames team and other contributors
  * http://eggs.gd/
  *
