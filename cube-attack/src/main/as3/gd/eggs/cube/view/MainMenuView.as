@@ -25,7 +25,7 @@ package gd.eggs.cube.view
 			init();
 		}
 
-		private function init():void
+		override public function init():void
 		{
 			var btn:Button = new Button();
 			btn.label = "play";
@@ -35,6 +35,7 @@ package gd.eggs.cube.view
 			btn.buttonMode = true;
 
 			this.addChild(btn);
+            super.init();
 		}
 
 		private function onPlayClick(event:MouseEvent):void
