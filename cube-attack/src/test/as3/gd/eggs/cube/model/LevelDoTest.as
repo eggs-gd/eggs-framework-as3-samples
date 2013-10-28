@@ -13,11 +13,11 @@ package gd.eggs.cube.model
 		public function levelDoTest():void
 		{
 			var object:Object = {
-				fieldSize:[20, 10],
-				colors:[0xff0000, 0x00ff00, 0x0000ff],
-				bomb:true,
-				cost:[3, 5, 8],
-				clicks:6
+				fieldSize: [20, 10],
+				colors: [0xff0000, 0x00ff00, 0x0000ff],
+				bomb: true,
+				cost: [3, 5, 8],
+				clicks: 6
 			};
 
 			var levelDo:LevelDO = new LevelDO(object);

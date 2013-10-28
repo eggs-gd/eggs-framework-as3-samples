@@ -39,7 +39,7 @@ package gd.eggs.cube.model
 
 			_levels = new Vector.<LevelDO>();
 
-			for (var i:int = 0 ; i < data["levels"]["length"] ; i ++)
+			for (var i:int = 0; i < data["levels"]["length"]; i++)
 			{
 				_levels.push(new LevelDO(data["levels"][i]));
 			}

@@ -1,60 +1,60 @@
 {
     "levels": [
         {
-            "fieldSize":[20, 10],
-            "colors":[255, 255, 255],
-            "bomb":false,
-            "cost":[3, 5, 8],
-            "clicks":6
+            "fieldSize": [20, 10],
+            "colors": [255, 255, 255],
+            "bomb": false,
+            "cost": [3, 5, 8],
+            "clicks": 6
         },
         {
-            "fieldSize":[20, 10],
-            "colors":[255, 255, 255],
-            "bomb":false,
-            "cost":[3, 5, 8],
-            "clicks":6
+            "fieldSize": [20, 10],
+            "colors": [255, 255, 255],
+            "bomb": false,
+            "cost": [3, 5, 8],
+            "clicks": 6
         },
         {
-            "fieldSize":[20, 10],
-            "colors":[255, 255, 255],
-            "bomb":false,
-            "cost":[3, 5, 8],
-            "clicks":5
+            "fieldSize": [20, 10],
+            "colors": [255, 255, 255],
+            "bomb": false,
+            "cost": [3, 5, 8],
+            "clicks": 5
         },
         {
-            "fieldSize":[20, 10],
-            "colors":[255, 255, 255],
-            "bomb":false,
-            "cost":[3, 5, 8],
-            "clicks":5
+            "fieldSize": [20, 10],
+            "colors": [255, 255, 255],
+            "bomb": false,
+            "cost": [3, 5, 8],
+            "clicks": 5
         },
         {
-            "fieldSize":[20, 10],
-            "colors":[255, 255, 255],
-            "bomb":false,
-            "cost":[3, 5, 8],
-            "clicks":4
+            "fieldSize": [20, 10],
+            "colors": [255, 255, 255],
+            "bomb": false,
+            "cost": [3, 5, 8],
+            "clicks": 4
         },
         {
-            "fieldSize":[20, 10],
-            "colors":[255, 255, 255],
-            "bomb":false,
-            "cost":[3, 5, 8],
-            "clicks":4
+            "fieldSize": [20, 10],
+            "colors": [255, 255, 255],
+            "bomb": false,
+            "cost": [3, 5, 8],
+            "clicks": 4
         },
         {
-            "fieldSize":[20, 10],
-            "colors":[255, 255, 255],
-            "bomb":false,
-            "cost":[3, 5, 8],
-            "clicks":3
+            "fieldSize": [20, 10],
+            "colors": [255, 255, 255],
+            "bomb": false,
+            "cost": [3, 5, 8],
+            "clicks": 3
         },
         {
-            "fieldSize":[20, 10],
-            "colors":[255, 255, 255],
-            "bomb":false,
-            "cost":[3, 5, 8],
-            "clicks":3
+            "fieldSize": [20, 10],
+            "colors": [255, 255, 255],
+            "bomb": false,
+            "cost": [3, 5, 8],
+            "clicks": 3
         }
     ]
 
