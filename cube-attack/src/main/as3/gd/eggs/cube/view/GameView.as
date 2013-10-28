@@ -9,8 +9,8 @@ package gd.eggs.cube.view
 	import gd.eggs.cube.Config;
 	import gd.eggs.cube.enum.Models;
 	import gd.eggs.cube.enum.ViewEvents;
-import gd.eggs.cube.model.DesignModel;
-import gd.eggs.cube.model.GameModel;
+	import gd.eggs.cube.model.DesignModel;
+	import gd.eggs.cube.model.GameModel;
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.view.BaseView;
 	import gd.eggs.mvc.view.ViewEvent;
@@ -24,52 +24,52 @@ import gd.eggs.cube.model.GameModel;
 
 		private var _backBtn:Button;
 
-        private var _design:DesignModel;
+		private var _design:DesignModel;
 
 		public function GameView()
 		{
 			var model:GameModel = ModelManager.getModel(Models.GAME) as GameModel;
 			super(model);
 
-            _design = ModelManager.getModel(Models.DESIGN) as DesignModel;
+			_design = ModelManager.getModel(Models.DESIGN) as DesignModel;
 
 			model.addCallback(this, GameModel.START_GAME, onGameStart);
 			model.addCallback(this, GameModel.UPDATE_FIELD, onFieldUpdate);
 			model.addCallback(this, GameModel.CLOSE_GAME, onGameClose);
 
-            if (!_design.isInited) _design.addCallback(this, DesignModel.INIT, init);
-            else init();
+			if (!_design.isInited) _design.addCallback(this, DesignModel.INIT, init);
+			else init();
 		}
 
 		override public function init():void
 		{
 			_design.removeCallback(this, DesignModel.INIT, init);
 
-            graphics.beginFill(0xaaaaaa);
+			graphics.beginFill(0xaaaaaa);
 			graphics.drawRect(0, 0, Config.SCREEN_SIZE.x, Config.SCREEN_SIZE.y);
 			graphics.endFill();
 
 			_blocksCont = new Sprite();
 			addChild(_blocksCont);
 
-            _blocksCont.x = (Config.SCREEN_SIZE.x - _design.fieldSize.x * (Config.BLOCK_SIZE.x + 2)) * 0.5;
-            _blocksCont.y = (Config.SCREEN_SIZE.y - _design.fieldSize.y * (Config.BLOCK_SIZE.y + 2)) - 20;
+			_blocksCont.x = (Config.SCREEN_SIZE.x - _design.fieldSize.x * (Config.BLOCK_SIZE.x + 2)) * 0.5;
+			_blocksCont.y = (Config.SCREEN_SIZE.y - _design.fieldSize.y * (Config.BLOCK_SIZE.y + 2)) - 20;
 
-            _blocks = new Vector.<Vector.<Block>>();
+			_blocks = new Vector.<Vector.<Block>>();
 
-            for (var i:int = 0; i < _design.fieldSize.x; i++)
-            {
-                _blocks[i] = new Vector.<Block>();
-                for (var j:int = 0; j < _design.fieldSize.y; j++)
-                {
-                    var block:Block = new Block();
-                    block.x = i * (Config.BLOCK_SIZE.x + 2);
-                    block.y = j * (Config.BLOCK_SIZE.y + 2);
-                    _blocksCont.addChild(block);
+			for (var i:int = 0; i < _design.fieldSize.x; i++)
+			{
+				_blocks[i] = new Vector.<Block>();
+				for (var j:int = 0; j < _design.fieldSize.y; j++)
+				{
+					var block:Block = new Block();
+					block.x = i * (Config.BLOCK_SIZE.x + 2);
+					block.y = j * (Config.BLOCK_SIZE.y + 2);
+					_blocksCont.addChild(block);
 
-                    _blocks[i][j] = block;
-                }
-            }
+					_blocks[i][j] = block;
+				}
+			}
 
 			_backBtn = new Button();
 			_backBtn.label = "<< Back";
@@ -87,11 +87,11 @@ import gd.eggs.cube.model.GameModel;
 
 		private function onGameStart():void
 		{
-            for (var i:int = 0; i < _design.fieldSize.x; i++)
+			for (var i:int = 0; i < _design.fieldSize.x; i++)
 			{
-                for (var j:int = 0; j < _design.fieldSize.y; j++)
+				for (var j:int = 0; j < _design.fieldSize.y; j++)
 				{
-                    _blocks[i][j].update(model.field[i][j]);
+					_blocks[i][j].update(model.field[i][j]);
 				}
 			}
 		}

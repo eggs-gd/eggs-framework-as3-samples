@@ -8,27 +8,27 @@ package gd.eggs.cube.model
 
 	public class DesignModel extends BaseModel
 	{
-        public static const INIT:String = "designModelInited";
-        private const DESTROY:String = "designModelDestroy";
+		public static const INIT:String = "designModelInited";
+		private const DESTROY:String = "designModelDestroy";
 
 
 		public function DesignModel()
 		{
 			super();
-            init();
+			init();
 		}
 
-        override public function init():void
-        {
-            update(INIT);
-            super.init();
-        }
+		override public function init():void
+		{
+			update(INIT);
+			super.init();
+		}
 
-        override public function destroy():void
-        {
-            super.destroy();
-            update(DESTROY);
-        }
+		override public function destroy():void
+		{
+			super.destroy();
+			update(DESTROY);
+		}
 
 		public function get fieldSize():Point { return new Point(20, 10); }
 	}

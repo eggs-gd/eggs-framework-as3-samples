@@ -35,7 +35,7 @@ package gd.eggs.cube.view
 			btn.buttonMode = true;
 
 			this.addChild(btn);
-            super.init();
+			super.init();
 		}
 
 		private function onPlayClick(event:MouseEvent):void
