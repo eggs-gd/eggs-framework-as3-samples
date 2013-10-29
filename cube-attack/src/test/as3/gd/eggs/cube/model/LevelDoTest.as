@@ -3,6 +3,9 @@
  */
 package gd.eggs.cube.model
 {
+
+	import gd.eggs.cube.model.dataobject.LevelDO;
+
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.equalTo;
 

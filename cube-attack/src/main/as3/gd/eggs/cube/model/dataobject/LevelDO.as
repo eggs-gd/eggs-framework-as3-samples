@@ -1,4 +1,4 @@
-package gd.eggs.cube.model
+package gd.eggs.cube.model.dataobject
 {
 	import flash.geom.Point;
 

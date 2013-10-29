@@ -6,6 +6,8 @@ package gd.eggs.cube.model
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 
+	import gd.eggs.cube.model.dataobject.LevelDO;
+
 	import gd.eggs.mvc.model.BaseModel;
 
 
@@ -56,9 +58,6 @@ package gd.eggs.cube.model
 
 		public function get fieldSize():Point { return new Point(20, 10); }
 
-		public function get levels():Vector.<LevelDO>
-		{
-			return _levels;
-		}
+		public function get levels():Vector.<LevelDO> { return _levels; }
 	}
 }
