@@ -3,6 +3,9 @@
  */
 package gd.eggs.cube.model
 {
+	import gd.eggs.cube.Config;
+	import gd.eggs.mvc.model.BaseModel;
+
 	import org.flexunit.asserts.assertNotNull;
 	import org.flexunit.async.Async;
 	import org.hamcrest.assertThat;
@@ -18,13 +21,14 @@ package gd.eggs.cube.model
 		[BeforeClass]
 		public static function beforeClass():void
 		{
+			Config.CONTENT_ROOT = "";
 			designModel = new DesignModel();
 		}
 
 		[Test(async, order=0)]
 		public function loadingDataTest():void
 		{
-			designModel.addCallback(this, DesignModel.INIT, onDesignModelInit)
+			designModel.addCallback(this, BaseModel.INITED, onDesignModelInit)
 			Async.asyncNativeResponder(this, onDesignModelInit, null, 1000, null, onTimeout);
 			designModel.init();
 		}

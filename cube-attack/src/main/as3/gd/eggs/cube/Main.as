@@ -19,6 +19,8 @@ package gd.eggs.cube
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 
+			Config.CONTENT_ROOT = "classes/";
+
 			Bootstrap.initialize(this);
 		}
 	}

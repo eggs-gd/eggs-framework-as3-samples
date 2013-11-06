@@ -12,6 +12,7 @@ package gd.eggs.cube.view
 	import gd.eggs.cube.model.DesignModel;
 	import gd.eggs.cube.model.GameModel;
 	import gd.eggs.mvc.app.ModelManager;
+	import gd.eggs.mvc.model.BaseModel;
 	import gd.eggs.mvc.view.BaseView;
 	import gd.eggs.mvc.view.ViewEvent;
 
@@ -37,13 +38,13 @@ package gd.eggs.cube.view
 			model.addCallback(this, GameModel.UPDATE_FIELD, onFieldUpdate);
 			model.addCallback(this, GameModel.CLOSE_GAME, onGameClose);
 
-			if (!_design.isInited) _design.addCallback(this, DesignModel.INIT, init);
+			if (!_design.isInited) _design.addCallback(this, BaseModel.INITED, init);
 			else init();
 		}
 
 		override public function init():void
 		{
-			_design.removeCallback(this, DesignModel.INIT, init);
+			_design.removeCallback(this, BaseModel.INITED, init);
 
 			graphics.beginFill(0xaaaaaa);
 			graphics.drawRect(0, 0, Config.SCREEN_SIZE.x, Config.SCREEN_SIZE.y);

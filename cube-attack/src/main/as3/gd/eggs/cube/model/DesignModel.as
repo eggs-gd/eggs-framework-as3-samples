@@ -6,6 +6,8 @@ package gd.eggs.cube.model
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 
+	import gd.eggs.cube.Config;
+
 	import gd.eggs.cube.model.dataobject.LevelDO;
 
 	import gd.eggs.mvc.model.BaseModel;
@@ -13,10 +15,6 @@ package gd.eggs.cube.model
 
 	public class DesignModel extends BaseModel
 	{
-		public static const INIT:String = "designModelInited";
-
-		public static const DESTROY:String = "designModelDestroy";
-
 		private var _levels:Vector.<LevelDO>;
 
 		public function DesignModel()
@@ -27,7 +25,7 @@ package gd.eggs.cube.model
 		override public function init():void
 		{
 			var loader:URLLoader = new URLLoader();
-			var request:URLRequest = new URLRequest("config.json");
+			var request:URLRequest = new URLRequest(Config.CONTENT_ROOT + "config.json");
 			loader.addEventListener(Event.COMPLETE, onLoadingComplete)
 			loader.load(request);
 		}
@@ -35,8 +33,8 @@ package gd.eggs.cube.model
 		private function onLoadingComplete(event:Event):void
 		{
 			var loader:URLLoader = event.currentTarget as URLLoader;
-			trace(loader.data);
 			var data:Object = JSON.parse(loader.data);
+			trace(loader.data);
 
 			_levels = new Vector.<LevelDO>();
 
@@ -46,13 +44,11 @@ package gd.eggs.cube.model
 			}
 
 			super.init();
-			update(INIT);
 		}
 
 		override public function destroy():void
 		{
 			super.destroy();
-			update(DESTROY);
 		}
 
 		public function get fieldSize():Point { return new Point(20, 10); }

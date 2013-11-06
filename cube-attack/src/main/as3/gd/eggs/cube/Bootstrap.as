@@ -45,11 +45,6 @@ package gd.eggs.cube
 			registerControllers();
 		}
 
-		public function destroy():void
-		{
-
-		}
-
 		public function registerModels():void
 		{
 			var model:BaseModel;
@@ -58,6 +53,7 @@ package gd.eggs.cube
 			model = new DesignModel();
 			model.init();
 			ModelManager.addModel(Models.DESIGN, model);
+
 			// Следующая по важности и частоте использования модель профиля пользователя.
 			model = new UserModel();
 			model.init();
