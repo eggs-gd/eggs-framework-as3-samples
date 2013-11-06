@@ -42,6 +42,17 @@ package gd.eggs.cube.controller
 
 		override public function destroy():void
 		{
+			var view:BaseView;
+
+			view = ViewManager.getView(Views.GAME);
+			view.removeEventListener(ViewEvent.CHANGE, onViewChange);
+
+			view = ViewManager.getView(Views.MAIN_MENU);
+			view.removeEventListener(ViewEvent.CHANGE, onViewChange);
+
+			view = ViewManager.getView(Views.STATUS_BAR);
+			view.removeEventListener(ViewEvent.CHANGE, onViewChange);
+
 			super.destroy();
 		}
 

@@ -30,7 +30,6 @@ package gd.eggs.cube.model
 			var request:URLRequest = new URLRequest("config.json");
 			loader.addEventListener(Event.COMPLETE, onLoadingComplete)
 			loader.load(request);
-
 		}
 
 		private function onLoadingComplete(event:Event):void

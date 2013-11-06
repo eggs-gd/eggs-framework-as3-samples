@@ -18,6 +18,7 @@ package gd.eggs.cube
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.app.ViewManager;
 	import gd.eggs.mvc.controller.BaseController;
+	import gd.eggs.mvc.model.BaseModel;
 	import gd.eggs.util.Validate;
 
 
@@ -26,11 +27,6 @@ package gd.eggs.cube
 		private static var _instance:Bootstrap;
 
 		private var _root:DisplayObjectContainer;
-
-		public function Bootstrap()
-		{
-
-		}
 
 		public static function initialize(root:DisplayObjectContainer):void
 		{
@@ -46,7 +42,6 @@ package gd.eggs.cube
 		{
 			registerModels();
 			registerViews();
-			registerNotifications();
 			registerControllers();
 		}
 
@@ -57,14 +52,21 @@ package gd.eggs.cube
 
 		public function registerModels():void
 		{
+			var model:BaseModel;
 			// Дизайн модель должна добавляться первой так как там только статика.
 			// И эта модель используется практически везде.
-			ModelManager.addModel(Models.DESIGN, new DesignModel());
+			model = new DesignModel();
+			model.init();
+			ModelManager.addModel(Models.DESIGN, model);
 			// Следующая по важности и частоте использования модель профиля пользователя.
-			ModelManager.addModel(Models.USER, new UserModel());
+			model = new UserModel();
+			model.init();
+			ModelManager.addModel(Models.USER, model);
 
 			// Дальше все остальные
-			ModelManager.addModel(Models.GAME, new GameModel());
+			model = new GameModel();
+			model.init();
+			ModelManager.addModel(Models.GAME, model);
 		}
 
 		public function registerViews():void
@@ -92,17 +94,9 @@ package gd.eggs.cube
 			ViewManager.addView(Layers.TOP, Views.STATUS_BAR, new StatusBarView());
 		}
 
-		public function registerNotifications():void
-		{
-
-		}
-
 		public function registerControllers():void
 		{
-			var controller:BaseController;
-
-			controller = new AppController();
-			controller.init();
+			new AppController().init();
 		}
 
 	}
