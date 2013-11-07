@@ -26,14 +26,21 @@ package gd.eggs.cube
 	{
 		private static var _instance:Bootstrap;
 
+		// root у нас при любых раскладах один. Так что не боимся сохранить ссылку.
 		private var _root:DisplayObjectContainer;
+
+		public function Bootstrap(root:DisplayObjectContainer)
+		{
+			if (_instance) throw "Can to be initialized just once";
+
+			_root = root;
+		}
 
 		public static function initialize(root:DisplayObjectContainer):void
 		{
 			if (Validate.isNull(_instance))
 			{
-				_instance = new Bootstrap();
-				_instance._root = root;
+				_instance = new Bootstrap(root);
 				_instance.init();
 			}
 		}
