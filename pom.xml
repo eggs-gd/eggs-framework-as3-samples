@@ -14,12 +14,32 @@
         <module>cube-attack</module>
     </modules>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <flexmojos.version>4.2-beta</flexmojos.version>
-        <flex.version>4.6.b.23201</flex.version>
-        <flashplayer.version>11.1</flashplayer.version>
-        <!--maven variable which points to your local repository -->
-        <internal.repo.path>file://d/prj/eggs/eggs-mvn-artifactory/mvn-repo</internal.repo.path>
-    </properties>
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+		</extensions>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>eggs-gd-release</id>
+			<name>eggsgd.cloudbees.release</name>
+			<url>dav:https://repository-eggsgd.forge.cloudbees.com/release/</url>
+		</repository>
+		<snapshotRepository>
+			<id>eggs-gd-snapshot</id>
+			<name>eggsgd.cloudbees.snapshot</name>
+			<url>dav:https://repository-eggsgd.forge.cloudbees.com/snapshot/</url>
+		</snapshotRepository>
+
+		<!--<site>
+		   <id>documentation</id>
+			<url>scp://www.mycompany.com/www/docs/project/</url>
+		</site>-->
+	</distributionManagement>
+
 </project>

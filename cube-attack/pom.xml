@@ -5,7 +5,7 @@
 
     <groupId>gd.eggs.as3.samples</groupId>
     <artifactId>cube-attack</artifactId>
-    <name>cube-attack</name>
+    <name>cube_attack</name>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>swf</packaging>
 
@@ -17,9 +17,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>gd.eggs.as3</groupId>
-            <artifactId>eggs-framework-as3</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>gd.eggs.as3.framework</groupId>
+            <artifactId>eggs-mvc-as3</artifactId>
+            <version>1.0.0</version>
             <type>swc</type>
         </dependency>
         <dependency>
@@ -29,10 +29,6 @@
             <type>swc</type>
         </dependency>
     </dependencies>
-
-    <properties>
-        <documentClass>./gd/eggs/cube/Main.as</documentClass>
-    </properties>
 
     <repositories>
 		<repository>

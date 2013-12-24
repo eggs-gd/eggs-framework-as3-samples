@@ -1,15 +1,15 @@
-package gd.eggs.cube
-{
+package {
+	import gd.eggs.cube.*;
 
 	import flash.display.Sprite;
 	import flash.events.Event;
 
 
 	[SWF(width=800, height=600)]
-	public class Main extends Sprite
+	public class cube_attack extends Sprite
 	{
 
-		public function Main()
+		public function cube_attack()
 		{
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
