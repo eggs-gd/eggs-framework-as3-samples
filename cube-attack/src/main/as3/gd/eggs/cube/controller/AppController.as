@@ -6,12 +6,12 @@ package gd.eggs.cube.controller
 	import gd.eggs.cube.model.GameModel;
 	import gd.eggs.mvc.app.ModelManager;
 	import gd.eggs.mvc.app.ViewManager;
-	import gd.eggs.mvc.controller.BaseController;
-	import gd.eggs.mvc.view.BaseView;
+	import gd.eggs.mvc.controller.Controller;
+	import gd.eggs.mvc.view.View;
 	import gd.eggs.mvc.view.ViewEvent;
 
 
-	public class AppController extends BaseController
+	public class AppController extends Controller
 	{
 
 		private var _gameModel:GameModel;
@@ -25,7 +25,7 @@ package gd.eggs.cube.controller
 		{
 			_gameModel = ModelManager.getModel(Models.GAME) as GameModel;
 
-			var view:BaseView;
+			var view:View;
 
 			view = ViewManager.getView(Views.GAME);
 			view.addEventListener(ViewEvent.CHANGE, onViewChange);
@@ -42,7 +42,7 @@ package gd.eggs.cube.controller
 
 		override public function destroy():void
 		{
-			var view:BaseView;
+			var view:View;
 
 			view = ViewManager.getView(Views.GAME);
 			view.removeEventListener(ViewEvent.CHANGE, onViewChange);

@@ -25,7 +25,7 @@ package {
 	import gd.eggs.mvc.app.ViewManager;
 
 	import gd.eggs.mvc.app.applicationStartup;
-	import gd.eggs.mvc.model.BaseModel;
+	import gd.eggs.mvc.model.Model;
 
 
 	[SWF(width=800, height=600)]
@@ -50,7 +50,7 @@ package {
 
 		public function registerModels():void
 		{
-			var model:BaseModel;
+			var model:Model;
 			// Дизайн модель должна добавляться первой так как там только статика.
 			// И эта модель используется практически везде.
 			model = new DesignModel();

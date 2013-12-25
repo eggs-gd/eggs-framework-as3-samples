@@ -12,12 +12,12 @@ package gd.eggs.cube.view
 	import gd.eggs.cube.model.DesignModel;
 	import gd.eggs.cube.model.GameModel;
 	import gd.eggs.mvc.app.ModelManager;
-	import gd.eggs.mvc.model.BaseModel;
-	import gd.eggs.mvc.view.BaseView;
+	import gd.eggs.mvc.model.Model;
+	import gd.eggs.mvc.view.View;
 	import gd.eggs.mvc.view.ViewEvent;
 
 
-	public class GameView extends BaseView
+	public class GameView extends View
 	{
 
 		private var _blocksCont:Sprite;
@@ -38,13 +38,13 @@ package gd.eggs.cube.view
 			model.addCallback(this, GameModel.UPDATE_FIELD, onFieldUpdate);
 			model.addCallback(this, GameModel.CLOSE_GAME, onGameClose);
 
-			if (!_design.isInited) _design.addCallback(this, BaseModel.INITED, init);
+			if (!_design.isInited) _design.addCallback(this, Model.INITED, init);
 			else init();
 		}
 
 		override public function init():void
 		{
-			_design.removeCallback(this, BaseModel.INITED, init);
+			_design.removeCallback(this, Model.INITED, init);
 
 			graphics.beginFill(0xaaaaaa);
 			graphics.drawRect(0, 0, Config.SCREEN_SIZE.x, Config.SCREEN_SIZE.y);

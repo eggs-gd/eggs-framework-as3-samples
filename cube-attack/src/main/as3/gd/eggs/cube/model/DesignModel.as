@@ -10,10 +10,10 @@ package gd.eggs.cube.model
 
 	import gd.eggs.cube.model.dataobject.LevelDO;
 
-	import gd.eggs.mvc.model.BaseModel;
+	import gd.eggs.mvc.model.Model;
 
 
-	public class DesignModel extends BaseModel
+	public class DesignModel extends Model
 	{
 		private var _levels:Vector.<LevelDO>;
 

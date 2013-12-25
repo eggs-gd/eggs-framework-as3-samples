@@ -3,10 +3,10 @@ package gd.eggs.cube.model
 
 	import gd.eggs.cube.enum.Models;
 	import gd.eggs.mvc.app.ModelManager;
-	import gd.eggs.mvc.model.BaseModel;
+	import gd.eggs.mvc.model.Model;
 
 
-	public class GameModel extends BaseModel
+	public class GameModel extends Model
 	{
 		public static const START_GAME:String = "startGame";
 		public static const CLOSE_GAME:String = "closeGame";
