@@ -2,11 +2,11 @@ package gd.eggs.cube.model
 {
 
 	import gd.eggs.cube.enum.Models;
-	import gd.eggs.mvc.app.ModelManager;
-	import gd.eggs.mvc.model.BaseModel;
+	import gd.eggs.mvc.app.ModelHolder;
+	import gd.eggs.mvc.model.Model;
 
 
-	public class GameModel extends BaseModel
+	public class GameModel extends Model
 	{
 		public static const START_GAME:String = "startGame";
 		public static const CLOSE_GAME:String = "closeGame";
@@ -18,7 +18,7 @@ package gd.eggs.cube.model
 
 		public function GameModel()
 		{
-			_design = ModelManager.getModel(Models.DESIGN) as DesignModel;
+			_design = ModelHolder.getModel(Models.DESIGN) as DesignModel;
 
 			_field = new Vector.<Vector.<int>>();
 			for (var i:int = 0; i < _design.fieldSize.x; i++)

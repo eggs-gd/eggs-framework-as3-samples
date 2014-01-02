@@ -4,14 +4,14 @@ package gd.eggs.cube.controller
 	import gd.eggs.cube.enum.ViewEvents;
 	import gd.eggs.cube.enum.Views;
 	import gd.eggs.cube.model.GameModel;
-	import gd.eggs.mvc.app.ModelManager;
-	import gd.eggs.mvc.app.ViewManager;
-	import gd.eggs.mvc.controller.BaseController;
-	import gd.eggs.mvc.view.BaseView;
+	import gd.eggs.mvc.app.ModelHolder;
+	import gd.eggs.mvc.app.ViewHolder;
+	import gd.eggs.mvc.controller.Controller;
+	import gd.eggs.mvc.view.View;
 	import gd.eggs.mvc.view.ViewEvent;
 
 
-	public class AppController extends BaseController
+	public class AppController extends Controller
 	{
 
 		private var _gameModel:GameModel;
@@ -23,34 +23,34 @@ package gd.eggs.cube.controller
 
 		override public function init():void
 		{
-			_gameModel = ModelManager.getModel(Models.GAME) as GameModel;
+			_gameModel = ModelHolder.getModel(Models.GAME) as GameModel;
 
-			var view:BaseView;
+			var view:View;
 
-			view = ViewManager.getView(Views.GAME);
+			view = ViewHolder.getView(Views.GAME);
 			view.addEventListener(ViewEvent.CHANGE, onViewChange);
 
-			view = ViewManager.getView(Views.MAIN_MENU);
+			view = ViewHolder.getView(Views.MAIN_MENU);
 			view.addEventListener(ViewEvent.CHANGE, onViewChange);
 
-			view = ViewManager.getView(Views.STATUS_BAR);
+			view = ViewHolder.getView(Views.STATUS_BAR);
 			view.addEventListener(ViewEvent.CHANGE, onViewChange);
 
-			ViewManager.show(Views.MAIN_MENU);
+			ViewHolder.show(Views.MAIN_MENU);
 			super.init();
 		}
 
 		override public function destroy():void
 		{
-			var view:BaseView;
+			var view:View;
 
-			view = ViewManager.getView(Views.GAME);
+			view = ViewHolder.getView(Views.GAME);
 			view.removeEventListener(ViewEvent.CHANGE, onViewChange);
 
-			view = ViewManager.getView(Views.MAIN_MENU);
+			view = ViewHolder.getView(Views.MAIN_MENU);
 			view.removeEventListener(ViewEvent.CHANGE, onViewChange);
 
-			view = ViewManager.getView(Views.STATUS_BAR);
+			view = ViewHolder.getView(Views.STATUS_BAR);
 			view.removeEventListener(ViewEvent.CHANGE, onViewChange);
 
 			super.destroy();
@@ -63,14 +63,14 @@ package gd.eggs.cube.controller
 			{
 				case ViewEvents.GO_TO_GAME:
 					_gameModel.startGame();
-					ViewManager.hideAll();
-					ViewManager.show(Views.GAME);
+					ViewHolder.hideAll();
+					ViewHolder.show(Views.GAME);
 					break;
 
 				case ViewEvents.GO_TO_MAIN_MENU:
 					_gameModel.closeGame();
-					ViewManager.hideAll();
-					ViewManager.show(Views.MAIN_MENU);
+					ViewHolder.hideAll();
+					ViewHolder.show(Views.MAIN_MENU);
 					break;
 			}
 		}

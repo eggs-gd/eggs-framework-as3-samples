@@ -9,16 +9,16 @@ package gd.eggs.cube.view
 	import gd.eggs.cube.enum.Models;
 	import gd.eggs.cube.enum.ViewEvents;
 	import gd.eggs.cube.model.DesignModel;
-	import gd.eggs.mvc.app.ModelManager;
-	import gd.eggs.mvc.view.BaseView;
+	import gd.eggs.mvc.app.ModelHolder;
+	import gd.eggs.mvc.view.View;
 	import gd.eggs.mvc.view.ViewEvent;
 
 
-	public class MainMenuView extends BaseView
+	public class MainMenuView extends View
 	{
 		public function MainMenuView()
 		{
-			var model:DesignModel = ModelManager.getModel(Models.GAME) as DesignModel;
+			var model:DesignModel = ModelHolder.getModel(Models.GAME) as DesignModel;
 
 			super(model, true);
 

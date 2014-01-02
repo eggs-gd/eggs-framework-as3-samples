@@ -4,7 +4,7 @@
 package gd.eggs.cube.model
 {
 	import gd.eggs.cube.Config;
-	import gd.eggs.mvc.model.BaseModel;
+	import gd.eggs.mvc.model.Model;
 
 	import org.flexunit.asserts.assertNotNull;
 	import org.flexunit.async.Async;
@@ -28,7 +28,7 @@ package gd.eggs.cube.model
 		[Test(async, order=0)]
 		public function loadingDataTest():void
 		{
-			designModel.addCallback(this, BaseModel.INITED, onDesignModelInit)
+			designModel.addCallback(this, Model.INITED, onDesignModelInit)
 			Async.asyncNativeResponder(this, onDesignModelInit, null, 1000, null, onTimeout);
 			designModel.init();
 		}

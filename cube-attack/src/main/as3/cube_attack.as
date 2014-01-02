@@ -21,11 +21,11 @@ package {
 	import gd.eggs.cube.view.StatusBarView;
 
 	import gd.eggs.mvc.app.IBootstrap;
-	import gd.eggs.mvc.app.ModelManager;
-	import gd.eggs.mvc.app.ViewManager;
+	import gd.eggs.mvc.app.ModelHolder;
+	import gd.eggs.mvc.app.ViewHolder;
 
 	import gd.eggs.mvc.app.applicationStartup;
-	import gd.eggs.mvc.model.BaseModel;
+	import gd.eggs.mvc.model.Model;
 
 
 	[SWF(width=800, height=600)]
@@ -50,22 +50,22 @@ package {
 
 		public function registerModels():void
 		{
-			var model:BaseModel;
+			var model:Model;
 			// Дизайн модель должна добавляться первой так как там только статика.
 			// И эта модель используется практически везде.
 			model = new DesignModel();
 			model.init();
-			ModelManager.addModel(Models.DESIGN, model);
+			ModelHolder.addModel(Models.DESIGN, model);
 
 			// Следующая по важности и частоте использования модель профиля пользователя.
 			model = new UserModel();
 			model.init();
-			ModelManager.addModel(Models.USER, model);
+			ModelHolder.addModel(Models.USER, model);
 
 			// Дальше все остальные
 			model = new GameModel();
 			model.init();
-			ModelManager.addModel(Models.GAME, model);
+			ModelHolder.addModel(Models.GAME, model);
 		}
 
 		public function registerViews(root:DisplayObjectContainer):void
@@ -79,18 +79,18 @@ package {
 			root.addChild(windowsCont);
 			root.addChild(topCont);
 
-			ViewManager.addScope(Layers.GAME, gameCont);
-			ViewManager.addScope(Layers.WINDOWS, windowsCont);
-			ViewManager.addScope(Layers.TOP, topCont);
+			ViewHolder.addScope(Layers.GAME, gameCont);
+			ViewHolder.addScope(Layers.WINDOWS, windowsCont);
+			ViewHolder.addScope(Layers.TOP, topCont);
 
 			// reg screens
-			ViewManager.addView(Layers.GAME, Views.GAME, new GameView());
+			ViewHolder.addView(Layers.GAME, Views.GAME, new GameView());
 
 			// reg windows
-			ViewManager.addView(Layers.WINDOWS, Views.MAIN_MENU, new MainMenuView());
+			ViewHolder.addView(Layers.WINDOWS, Views.MAIN_MENU, new MainMenuView());
 
 			// reg top layer
-			ViewManager.addView(Layers.TOP, Views.STATUS_BAR, new StatusBarView());
+			ViewHolder.addView(Layers.TOP, Views.STATUS_BAR, new StatusBarView());
 		}
 
 		public function registerControllers():void
